@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import ReactDOM from 'react-dom';
 // import * as serviceWorker from './serviceWorker';
 
-const NoteApp = () => {
+const NoteApp = () => { 
     const [notes, setNotes] = useState([])
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
+
+    useEffect(() => {
+        console.log('use effect ran');
+        document.title = notes
+        // return () => {
+           
+        // };
+    })
 
     const addNote = (e) => {
         e.preventDefault()
@@ -25,11 +33,7 @@ const NoteApp = () => {
         <div>
             <h1>Notes</h1>
             {notes.map((note) => (
-                <div key={note.title}>
-                    <h3>{note.title}</h3>
-                    <p>{note.body}</p>
-                    <button onClick={() => removeNote(note.title)}>x</button>
-                </div>
+                <Note  key={note.title} note={note} removeNote={removeNote}/>
             ))}
             <p>Add note</p>
             <form onSubmit={addNote}>
@@ -41,11 +45,32 @@ const NoteApp = () => {
     )
 }
 
+const Note = ({ note, removeNote }) => {
+    return (
+        <div >
+            <h3>{note.title}</h3>
+            <p>{note.body}</p>
+            <button onClick={() => removeNote(note.title)}>x</button>
+        </div>
+    )
+}
+
+
+
 export default NoteApp
 
-// const App = (props) => {
+// const CountApp = (props) => {
 //     const [count, setCount] = useState(props.count)
 //     const [text, setText] = useState('')
+
+//     useEffect(() => {
+//         console.log('use effect ran');
+//         document.title = count
+        
+//         // return () => {
+//         //     cleanup
+//         // };
+//     })
 
 //     return (
 //         <div>
@@ -57,6 +82,7 @@ export default NoteApp
 //         </div>
 //     )
 // }
+// export default CountApp
 
 // ReactDOM.render(<NoteApp/>, document.getElementById('root'));
 

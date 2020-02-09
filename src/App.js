@@ -4,6 +4,7 @@ import './App.css';
 import Counter from './Counter.js/Counter';
 import Form from './Form/Form';
 import NoteApp from './Notes/Notes';
+import CountApp from './Notes/Notes';
 
 function App() {
   return (
