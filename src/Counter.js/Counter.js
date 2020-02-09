@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 
-// import Button from 'react-bootstrap/Button';
+
 
 const Button = styled.button`
   color: green;
@@ -16,6 +16,16 @@ const Button = styled.button`
 export default function Counter() {
     const [count, setCount] = useState(0);
     console.log('count', count);
+
+    // useEffect is the conbination of component DidMount, DidUpdate, and WillMount
+    useEffect(() => {
+        console.log('effected called')
+        document.title = `counter is ${count}`
+        
+        // return () => {
+        //     cleanup
+        // };
+    })
     
     return (
         <div>
