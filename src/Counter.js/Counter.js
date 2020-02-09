@@ -15,23 +15,38 @@ const Button = styled.button`
 
 export default function Counter() {
     const [count, setCount] = useState(0);
+    const [count2, setCount2] = useState(100);
     console.log('count', count);
+    console.log('count2', count2);
 
     // useEffect is the conbination of component DidMount, DidUpdate, and WillMount
     useEffect(() => {
         console.log('effected called')
-        document.title = `counter is ${count}`
+        document.title = `count is ${count}`
         
-        // return () => {
-        //     cleanup
-        // };
-    })
+        return () => {
+            // called when component unMounts
+        };
+    },[count])
+
+    function increaseCounter() {
+        if (count2 % 2 === 1) {
+            setCount( prevCount => prevCount + 2)
+        }
+        setCount2( prevCount => prevCount -1)
+    }
     
     return (
         <div>
         
-            <h1> count this number {count} </h1>
-            <Button onClick={() => setCount(count +1) }> Click</Button>
+            <h1> count this number {count} || {count2} </h1>
+    
+            <Button onClick={increaseCounter }> Click increment</Button>
         </div>
     )
 }
+
+// Before
+// <Button onClick={() => setCount(count +1) }> Click</Button>
+// After
+//  <Button onClick={increaseCounter }> Click</Button>
