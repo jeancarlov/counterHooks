@@ -20,10 +20,8 @@ const Form = () => {
      })
   
       return (
-          
-         
-          <React.Fragment>
-       
+          <div>
+            
               <input 
               name= 'email'  
               value={values.email} 
@@ -35,11 +33,8 @@ const Form = () => {
               value={values.password} 
               onChange={handleChange}
               />
-              </React.Fragment>
-              
-         
-          
-          
+             
+            </div>
       );
   };
   
