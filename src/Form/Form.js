@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import React from "react";
 import { useForm } from "./useForm";
 
- export default function Form () {
+ 
+const Form = () => {
     // const [email, setEmail] = useState("");
     // const [password, setPassword] = useState("");
 
@@ -10,9 +11,19 @@ import { useForm } from "./useForm";
 //   const [values2, handleChange2] = useForm({ firstName: "", lastName: "" });
   // const [values2, handleChange2] = useForm({ firstName: "", lastName: "" });
 
+     useEffect(() => {
+         console.log('test');
+         
+         return () => {
+           
+         };
+     })
   
       return (
-          <div>
+          
+         
+          <React.Fragment>
+       
               <input 
               name= 'email'  
               value={values.email} 
@@ -24,12 +35,15 @@ import { useForm } from "./useForm";
               value={values.password} 
               onChange={handleChange}
               />
-
-          </div>
+              </React.Fragment>
+              
+         
+          
+          
       );
   };
   
 
-
+  export default Form;
 
   
